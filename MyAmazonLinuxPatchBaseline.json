@@ -1,0 +1,52 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Resources": {
+		"AmazonLinuxPatchBaseline": {
+			"Type": "AWS::SSM::PatchBaseline",
+			"Properties": {
+				"OperatingSystem": "AMAZON_LINUX",
+				"ApprovedPatches": [],
+				"PatchGroups": [],
+				"Description": "Create Patch Baselines for Amazon Linux",
+				"ApprovedPatchesComplianceLevel": "UNSPECIFIED",
+				"ApprovalRules": {
+					"PatchRules": [{
+						"ApproveAfterDays": 0,
+						"ComplianceLevel": "CRITICAL",
+						"EnableNonSecurity": true,
+						"PatchFilterGroup": {
+							"PatchFilters": [{
+									"Key": "PRODUCT",
+									"Values": [
+										"AmazonLinux2017.09"
+									]
+								},
+								{
+									"Key": "CLASSIFICATION",
+									"Values": [
+										"Security",
+										"Bugfix",
+										"Enhancement",
+										"Recommended"
+									]
+								},
+								{
+									"Key": "SEVERITY",
+									"Values": [
+										"Critical",
+										"Important",
+										"Medium",
+										"Low"
+									]
+								}
+							]
+						}
+					}]
+				},
+				"Name": "My-AmazonLinuxPatchBaseline",
+				"RejectedPatches": []
+			}
+		}
+	}
+
+}
